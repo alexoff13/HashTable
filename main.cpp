@@ -1,55 +1,63 @@
-#include "TableProducts.h"
-#include "product.h"
+#include "src/TableProducts.h"
+#include "src/product.h"
 #include<iostream>
 
 
 int main() {
-    TableProducts tp = TableProducts(50, 1.0);
-    string s="ZZZ";
-  for (int i = 0; i < 5; i++) {
-      s[2]--;
-      product p1 = product(s, i, "12", "12");
+    //ToDO сьедает элементы в середине - fixed
+    TableProducts tp = TableProducts(16, 0.8);
+    string s = "ZZZ";
+    Hash hash;
+    product p1 = product(s, 1, "12", "12");
+    for (int i = 0; i < 1000; i++) {
+        p1.name[2]--;
+        p1.barcode = i;
+        cout << p1.name << " " << p1.barcode << hash.HashFunction1(p1.name + std::to_string(p1.barcode), 20) << endl;
+        //product p1 = product(s, i, "12", "12");
         tp.Add(p1);
     }
     cout << tp;
-  cout<<endl<<"----------------------"<<endl;
+    cout << endl << "----------------------" << endl;
 
-    s="ZZZ";
-    for (int i = 0; i < 5; i+=2) {
-        s[2]-=2;
-        product p1 = product(s, i, "12", "12");
-        tp.Add(p1);
-    }
-    cout << tp;
-    cout<<endl<<"----------------------"<<endl;
+    /* s="ZZZ";
+     for (int i = 0; i < 5; i+=2) {
+         s[2]-=2;
+         product p1 = product(s, i, "12", "12");
 
+         tp.Add(p1);
+     }
+     cout << tp;
+     cout<<endl<<"----------------------"<<endl;
 
-    s="ZZZ";
-    for (int i = 0; i < 5; i+=2) {
-        s[2]-=2;
-        product p1 = product(s, i, "12", "12");
-        tp.Add(p1);
-    }
-    cout << tp;
-    cout<<endl<<"----------------------"<<endl;
-
-     s="ZZZ";
-    for (int i = 0; i < 5; i+=2) {
-        s[2]-=2;
-        product p1 = product(s, i, "12", "12");
+ */
+    /*   s="ZZZ";
+       for (int i = 0; i < 5; i+=2) {
+           s[2]-=2;
+           product p1 = product(s, i, "12", "12");
+           tp.Add(p1);
+       }
+       cout << tp;
+       cout<<endl<<"----------------------"<<endl;
+   */
+    s = "ZZZ";
+    p1.barcode -= 2;
+    for (int i = 0; i < 15; i += 2) {
+        p1.name[2] += 2;
+        p1.barcode -= i;
+        cout << p1.name << " " << p1.barcode << endl;
         tp.Remove(p1);
     }
     cout << tp;
 
 
-    s="ZZZ";
-    for (int i = 0; i < 5; i+=1) {
-        s[2]-=1;
-        product p1 = product(s, i, "12", "12");
-        cout<<tp.Find(p1)<<endl;
-    }
-    cout << tp;
-
+    /*   s="ZZZ";
+       for (int i = 0; i < 5; i+=1) {
+           s[2]-=1;
+           product p1 = product(s, i, "12", "12");
+           cout<<tp.Find(p1)<<endl;
+       }
+       cout << tp;
+   */
 //for(int i=0;i<50;++i){
 //    product p1 = product("name", i, "12", "12");
 //       tp.Add(p1);
