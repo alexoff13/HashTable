@@ -22,17 +22,13 @@ public:
     }
 
     friend std::ostream &operator<<(std::ostream &out, const product &product) {
-        out << "Product: " << product.name << "\nКуплен: " << product.dateOfPurchase << "\nГоден до: "
-            << product.dateOfExpiration << "\nШтрихкод: " << product.barcode << "\n";
-
+        //   out << "Product: " << product.name << "\nКуплен: " << product.dateOfPurchase << "\nГоден до: "
+        //     << product.dateOfExpiration << "\nШтрихкод: " << product.barcode << "\n";
+        out << "Product: " << product.name << "  Куплен: " << product.dateOfPurchase << "  Годен до: "
+            << product.dateOfExpiration << "  Штрихкод: " << product.barcode << "\n";
         return out;
     }
 
-//    friend std::ostream &operator<<(std::ostream &out, const product &product) {
-//        out << "Штрихкод: " << product.barcode << "\n";
-//
-//        return out;
-//    }
 
     friend bool operator==(const product &a, const product &b) {
         return b.name == a.name && b.barcode == a.barcode && b.dateOfPurchase == a.dateOfPurchase &&
