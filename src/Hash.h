@@ -17,6 +17,7 @@ public:
     int HashFunction1(const std::string str, int table_size);
 
     unsigned int HashFunction2(int hash1, int step, int table_size);
+
 };
 
 

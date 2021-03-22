@@ -4,68 +4,66 @@
 
 
 int main() {
-    //ToDO сьедает элементы в середине - fixed
-    TableProducts tp = TableProducts(16, 0.8);
+    TableProducts tp = TableProducts(8, 0.8);
     string s = "ZZZ";
-    Hash hash;
+    //  Hash hash;
+    string s1 = "AAA";
     product p1 = product(s, 1, "12", "12");
-    for (int i = 0; i < 1000; i++) {
+    product p2 = product(s1, 1, "12", "12");
+    for (int i = 0; i < 90; i++) {
         p1.name[2]--;
-        p1.barcode = i;
-        cout << p1.name << " " << p1.barcode << hash.HashFunction1(p1.name + std::to_string(p1.barcode), 20) << endl;
-        //product p1 = product(s, i, "12", "12");
-        tp.Add(p1);
+        p1.barcode = 100 + i;
+        //     product p = product(to_string(i), 100 - i, "", "");
+        cout << tp.Add(p1) << endl;
+        p2.name[0]++;
+        p2.barcode = 300 - i;
+        tp.Add(p2);
     }
-    cout << tp;
-    cout << endl << "----------------------" << endl;
 
-    /* s="ZZZ";
-     for (int i = 0; i < 5; i+=2) {
-         s[2]-=2;
-         product p1 = product(s, i, "12", "12");
-
-         tp.Add(p1);
-     }
-     cout << tp;
-     cout<<endl<<"----------------------"<<endl;
-
- */
-    /*   s="ZZZ";
-       for (int i = 0; i < 5; i+=2) {
-           s[2]-=2;
-           product p1 = product(s, i, "12", "12");
-           tp.Add(p1);
-       }
-       cout << tp;
-       cout<<endl<<"----------------------"<<endl;
-   */
-    s = "ZZZ";
-    p1.barcode -= 2;
-    for (int i = 0; i < 15; i += 2) {
-        p1.name[2] += 2;
-        p1.barcode -= i;
-        cout << p1.name << " " << p1.barcode << endl;
-        tp.Remove(p1);
-    }
     cout << tp;
 
 
-    /*   s="ZZZ";
-       for (int i = 0; i < 5; i+=1) {
-           s[2]-=1;
-           product p1 = product(s, i, "12", "12");
-           cout<<tp.Find(p1)<<endl;
-       }
-       cout << tp;
-   */
-//for(int i=0;i<50;++i){
-//    product p1 = product("name", i, "12", "12");
-//       tp.Add(p1);
-//}
-//    cout<<tp<<endl;
-//    product p1 = product("name", 48, "12", "12");
-//    tp.Add(p1);
-//cout<<tp<<endl;
+    for (int i = 0; i < 99; i++) {
+
+        //   product p = product(to_string(i), 100 - i, "", "");
+   //     cout << p1.name << " " << p1.barcode << endl;
+        cout << tp.Remove(p1) << endl;
+        p1.name[2] += 1;
+        p1.barcode -= 1;
+        cout << p2.name << " " << p2.barcode << endl;
+        cout << tp.Remove(p2) << endl;
+        p2.name[0] -= 1;
+        p2.barcode += 1;
+    }
+
+    cout << tp;
+
+
+    for (int i = 0; i < 10; i++) {
+        p2.name[0] -= 2;
+        p2.barcode += 2;
+        tp.Add(p2);
+        //   product p = product(to_string(i), 100 - i, "", "");
+//        cout << p1.name << " " << p1.barcode << endl;
+        cout << tp.Add(p2) << endl;
+    }
+
+
+    cout << tp;
+
+
+//    for (int i = 0; i < 5; i += 2) {
+//        s[2] -= 2;
+//        product p1 = product(s, i, "12", "12");
+//        cout << p1.name << " " << p1.barcode << " " << hash.HashFunction1(p1.name + std::to_string(p1.barcode), 20)
+//             << endl;
+//        tp.Add(p1);
+//    }
+//    cout << tp;
+//    cout << endl << "----------------------" << endl;
+//
+//
+
 
 //    product p1 = product("z", 1, "12", "12");
 //    product p2 = product("y", 2, "12", "12");

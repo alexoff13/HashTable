@@ -2,6 +2,7 @@
 #define HASH_TABLE_TABLEPRODUCTS_H
 
 #include <utility>
+#include "math.h"
 #include "product.h"
 #include "Hash.h"
 
@@ -20,9 +21,13 @@ private:
     Hash hash;
     Node **values;
 
-    void resize() {
+    void resize_base(bool flag) {
         int past_buffer_size = bufferSize;
-        bufferSize *= 2;
+        if (flag) {
+            bufferSize *= 2;
+        } else {
+            bufferSize /= 2;
+        }
 
         size = 0;
         Node **arr2 = new Node *[bufferSize];
@@ -38,6 +43,14 @@ private:
             if (arr2[i])
                 delete arr2[i];
         delete[] arr2;
+    }
+
+    void constriction() {
+        resize_base(false);
+    }
+
+    void resize() {
+        resize_base(true);
     }
 
     void rehash() {
@@ -58,11 +71,13 @@ private:
     }
 
 public:
-    //TODO проверка на допустимость передаваемого bufferSize(кратен степени двойки)
-    //TODO проерять rehashSize на допустимость
-    TableProducts(int buffer_size_ = 8, double rehash_size_ = 0.95) {
-        bufferSize = buffer_size_;
+
+    TableProducts(int pow_size = 3, double rehash_size_ = 0.95) {
+        bufferSize = pow(2, pow_size);
         rehashSize = rehash_size_;
+        if (rehashSize >= 1.0) {
+            rehashSize = 0.80;
+        }
         values = new Node *[bufferSize];
         size = 0;
 
@@ -128,6 +143,8 @@ public:
     }
 
     bool Remove(product product_) {
+        if (size + 30 < int(rehashSize * bufferSize))
+            constriction();
         int hash1 = hash.HashFunction1(product_.name + std::to_string(product_.barcode), bufferSize);
         if (values[hash1] != nullptr && values[hash1]->state && values[hash1]->value == product_) {
             values[hash1]->state = false;
@@ -163,9 +180,3 @@ public:
 
 
 #endif //HASH_TABLE_TABLEPRODUCTS_H
-
-
-
-
-
-
