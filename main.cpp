@@ -52,34 +52,34 @@ int main() {
     cout << tp;
 
 
-//    for (int i = 0; i < 5; i += 2) {
-//        s[2] -= 2;
-//        product p1 = product(s, i, "12", "12");
-//        cout << p1.name << " " << p1.barcode << " " << hash.HashFunction1(p1.name + std::to_string(p1.barcode), 20)
-//             << endl;
-//        tp.Add(p1);
-//    }
-//    cout << tp;
-//    cout << endl << "----------------------" << endl;
-//
-//
+    for (int i = 0; i < 5; i += 2) {
+        s[2] -= 2;
+        product p1 = product(s, i, "12", "12");
+        cout << p1.name << " " << p1.barcode << " " << hash.HashFunction1(p1.name + std::to_string(p1.barcode), 20)
+             << endl;
+        tp.Add(p1);
+    }
+    cout << tp;
+    cout << endl << "----------------------" << endl;
 
 
-//    product p1 = product("z", 1, "12", "12");
-//    product p2 = product("y", 2, "12", "12");
-//
-//    cout << "0 " << tp.Find(p2) << endl;
-//    cout << "1 " << tp.Add(p1) << endl;
-//    cout << "1 " << tp.Find(p1) << endl;
-//    cout << "1 " << tp.Add(p2) << endl;
-//    cout << "1 " << tp.Find(p1) << endl;
-//    cout << "1 " << tp.Find(p2) << endl;
-//    cout << "1 " << tp.Remove(p2) << endl;
-//    cout << "0 " << tp.Find(p2) << endl;
-//    cout << "0 " << tp.Remove(p2) << endl;
-//    cout << "1 " << tp.Find(p1) << endl;
-//    cout << "1 " << tp.Add(p2) << endl;
-//    cout << tp;
+
+
+    product p1 = product("z", 1, "12", "12");
+    product p2 = product("y", 2, "12", "12");
+
+    cout << "0 " << tp.Find(p2) << endl;
+    cout << "1 " << tp.Add(p1) << endl;
+    cout << "1 " << tp.Find(p1) << endl;
+    cout << "1 " << tp.Add(p2) << endl;
+    cout << "1 " << tp.Find(p1) << endl;
+    cout << "1 " << tp.Find(p2) << endl;
+    cout << "1 " << tp.Remove(p2) << endl;
+    cout << "0 " << tp.Find(p2) << endl;
+    cout << "0 " << tp.Remove(p2) << endl;
+    cout << "1 " << tp.Find(p1) << endl;
+    cout << "1 " << tp.Add(p2) << endl;
+    cout << tp;
     return 0;
 
 }
